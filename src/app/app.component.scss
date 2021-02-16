@@ -1,0 +1,15 @@
+button { 
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    width: 50%;
+    height: 40px;
+    margin: 0 auto;
+    margin-top: 10px;
+    img {
+        justify-content: center;
+        align-items: center;  
+    }
+}
