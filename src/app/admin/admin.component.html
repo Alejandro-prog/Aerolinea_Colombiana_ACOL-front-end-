@@ -1,25 +1,23 @@
-
-
 <div class="admin_panel">
-    <h1>Add a Flight</h1>
-    <input type="text" [(ngModel)]="origin" placeholder="origin">
-    <input type="text" [(ngModel)]="destination" placeholder="destination">
-    <input type="number" [(ngModel)]="flightNumber" placeholder="flight number">
-    <span>depart:</span>   
-    <input type="date" [(ngModel)]="depart">
-    <span>arrive:</span>   
-    <input type="date" [(ngModel)]="arrive">
-    <div class="non_stop_box">
-        <div>nonstop: </div>
-        <div><input type="checkbox" (click)="toggleNonStop()"></div>
+    <h1>AÑADIR UN VUELO</h1>
+    <input class="form-control" type="text" [(ngModel)]="origin" placeholder="Origen">
+    <input class="form-control" type="text" [(ngModel)]="destination" placeholder="Destino">
+    <input class="form-control" type="number" [(ngModel)]="flightNumber" placeholder="Número de vuelo">
+    <span>SALIDA</span>   
+    <input class="form-control" type="date" [(ngModel)]="depart">
+    <span>LLEGADA</span>   
+    <input  class="form-control" type="date" [(ngModel)]="arrive">
+    <div class="custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="customSwitch1" (click)="toggleNonStop()">
+        <label class="custom-control-label" for="customSwitch1" style="color: white; margin-top: 10px;">Escalas</label>
     </div>
-
-    <button (click)="sendFlight()">create flight</button>
-
+    <button type="button" class="btn btn-outline-success" (click)="sendFlight()">
+        CREAR
+    </button>    
 </div>
-
 <div class="editPanel">
-    <table class="flightTable">
+  <table class="table table-dark">
+    <thead>
         <tr>
             <td>origin</td>
             <td>destination</td>
@@ -30,22 +28,19 @@
             <td>update</td>
             <td>delete</td>
         </tr>
-        <tr *ngFor="let flight of flightList; let i=index">
+    </thead>
+    <tbody>
+        <tr *ngFor="let flight of flightList; let i=index" class="table-active">
             <td><input [(ngModel)]='flight.origin'></td>
             <td><input [(ngModel)]='flight.destination'></td>
             <td><input [(ngModel)]='flight.flightNumber'></td>
             <td>{{flight.depart | date : 'shortDate'}}</td>
             <td>{{flight.arrive | date : 'shortDate'}}</td>
             <td>{{flight.nonstop}}</td>
-            <td><button class="update" (click)="update(flight)">go</button></td>
-            <td><button class="delete" (click)="delete(flight)">go</button></td>
+            <td><button class="update" (click)="update(flight)"><img src="https://img.icons8.com/color/30/000000/approve-and-update.png"/></button></td>
+            <td><button class="delete" (click)="delete(flight)"><img src="https://img.icons8.com/color/30/000000/delete-forever.png"/></button></td>
         </tr>
     </table>
 </div>
-
-
-   
- 
-
 
 
